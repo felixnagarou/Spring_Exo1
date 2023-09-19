@@ -16,7 +16,6 @@ public class GameServiceClassic implements GameService{
 
     private int turnCount;
 
-    private String userInput;
 
     private List<String> gameState = new ArrayList<>(Arrays.asList("SUJET", "VERBE", "COMPLEMENT"));
 
@@ -24,14 +23,12 @@ public class GameServiceClassic implements GameService{
 
 
     @Override
-    public int play(Sentence sentence) {
+    public void play(Sentence sentence) {
         for (turnCount = 0; turnCount <= 3; turnCount++) {
-            if (userInput != null) {
+            if (sentence.getUserInput() != null) {
                 sentence.getParts().add(userInput);
-                return turnCount;
             }
         }
-        return turnCount;
     }
 
     @Override
@@ -43,6 +40,7 @@ public class GameServiceClassic implements GameService{
     public int getTurnCount() {
         return turnCount;
     }
+
 
 
 }

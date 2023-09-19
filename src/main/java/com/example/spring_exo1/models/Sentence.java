@@ -41,12 +41,12 @@ public class Sentence {
     public String getActualPart(){
         return actualPart;
     }
-    public List<String> getPartLabels() {
-        return partLabels;
-    }
+    //public List<String> getPartLabels() {
+      //  return partLabels;
+    //}
 
 
     public String getUserInput() {
         return userInput;
     }
-}
+

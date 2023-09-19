@@ -28,8 +28,10 @@ public class SentenceController {
         return "game";
     }
 
+
+
     @PostMapping("/cadavreExquis")
-    public String getUserInput(@ModelAttribute Sentence sentence, Model model){
+    public String setSentence(@ModelAttribute Sentence sentence, Model model){
         model.addAttribute("sentence", sentence);
         return "cadavreExquis/game";
     }
