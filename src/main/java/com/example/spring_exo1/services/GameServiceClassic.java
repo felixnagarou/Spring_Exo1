@@ -10,16 +10,24 @@ import java.util.List;
 @Profile({"classic", "default"})
 public class GameServiceClassic implements GameService{
     private String userInput;
-    private Sentence sentence;
 
+    private String error;
+
+    public Sentence sentence;
 
 
     @Override
     public Sentence play() {
-        sentence = new Sentence();
-        for (int i = 0; i <= 3; i++){
-            sentence.getParts().add(userInput);
-            sentence.setCounter(i);
+        if (sentence == null) {
+            sentence = new Sentence();
+        }
+        for (int i = 0; i <= 3; i++) {
+            if (userInput != null) {
+                sentence.getParts().add(userInput);
+                sentence.setActualPart(i);
+                sentence.setCounter(i);
+                return sentence;
+            }
         }
         return sentence;
     }

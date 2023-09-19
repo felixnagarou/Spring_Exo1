@@ -9,7 +9,7 @@
     <h1>Jeu du cadavre exquis</h1>
     <hr>
     <h2>Joueur <span th:text="${playerCount}"></span>  : entrer le <span th:text="${instruction}"></span></h2>
-    <form action="" method="post">
+    <form action="#" th:action="@${/game}" method="post">
         <label for="part">Entrer une partie de phrase</label>
         <input type="text" name="part" id="part" required>
     </form>

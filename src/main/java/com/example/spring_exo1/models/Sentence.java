@@ -1,15 +1,17 @@
 package com.example.spring_exo1.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Sentence {
     private List<String> parts;
 
-
-
     private int counter;
-    public List<String> partLabel = List.of("SUJET", "VERBE", "COMPLÉMENT");
+
+    private List<String> partLabels = new ArrayList<>(Arrays.asList("SUJET", "VERBE", "COMPLÉMENT"));
+
+    private String actualPart;
 
     public Sentence() {
     }
@@ -29,7 +31,15 @@ public class Sentence {
         this.counter = counter;
     }
 
-    public List<String> getPartLabel() {
-        return partLabel;
+    public void setActualPart(int i) {
+        actualPart = partLabels.get(i);
+    }
+
+    public String getActualPart(){
+        return actualPart;
+    }
+
+    public List<String> getPartLabels() {
+        return partLabels;
     }
 }
