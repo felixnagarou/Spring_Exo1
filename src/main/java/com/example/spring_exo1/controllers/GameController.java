@@ -1,7 +1,7 @@
 package com.example.spring_exo1.controllers;
 
 import com.example.spring_exo1.services.GameService;
-import com.example.spring_exo1.services.GameServiceClassic;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/index")
 public class GameController {
 
     public final GameService gameService;
@@ -18,11 +17,16 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping("game")
-    public String startGame(Model model){
-        model.addAttribute("");
-        model.addAttribute("");
-        return "game";
+    @RequestMapping("index")
+    public String index(){
+        return "index";
+    }
+
+    @RequestMapping("/index/cadavreExquis")
+    public String sendInstruction(Model model){
+        model.addAttribute("playerCount",gameService.play().getCounter());
+
+        return "cadavreExquis/game";
     }
 
 

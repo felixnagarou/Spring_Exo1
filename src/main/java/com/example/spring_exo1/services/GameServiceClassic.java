@@ -17,8 +17,9 @@ public class GameServiceClassic implements GameService{
     @Override
     public Sentence play() {
         sentence = new Sentence();
-        for (int counter = 0; counter <= 3; counter++){
+        for (int i = 0; i <= 3; i++){
             sentence.getParts().add(userInput);
+            sentence.setCounter(i);
         }
         return sentence;
     }
