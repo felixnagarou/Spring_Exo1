@@ -25,8 +25,8 @@ public class GameController {
 
     @RequestMapping("/index/cadavreExquis")
     public String sendInstruction(Model model){
-        model.addAttribute("playerCount", gameService.play());
-        model.addAttribute("instruction", gameService.play());
+        model.addAttribute("playerCount", gameService.getTurnCount());
+        model.addAttribute("instruction", gameService.getGameState(gameService.getTurnCount()));
         return "cadavreExquis/game";
     }
 }

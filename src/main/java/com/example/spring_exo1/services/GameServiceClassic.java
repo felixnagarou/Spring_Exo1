@@ -24,18 +24,24 @@ public class GameServiceClassic implements GameService{
 
 
     @Override
-    public String play(Sentence sentence) {
-        for (turnCount= 0; turnCount <= 3; turnCount++) {
+    public int play(Sentence sentence) {
+        for (turnCount = 0; turnCount <= 3; turnCount++) {
             if (userInput != null) {
                 sentence.getParts().add(userInput);
-                return sentence;
+                return turnCount;
             }
         }
-        return sentence;
+        return turnCount;
     }
 
-    public void setGameState(int turnCount){
+    @Override
+    public String getGameState(int turnCount){
+        return gameState.get(turnCount);
+    }
 
+    @Override
+    public int getTurnCount() {
+        return turnCount;
     }
 
 
