@@ -5,30 +5,38 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 @Service
 @Profile({"classic", "default"})
 public class GameServiceClassic implements GameService{
-    private String userInput;
+
 
     private String error;
 
-    public Sentence sentence;
+    private int turnCount;
+
+    private String userInput;
+
+    private List<String> gameState = new ArrayList<>(Arrays.asList("SUJET", "VERBE", "COMPLEMENT"));
+
+    //public Sentence sentence;
 
 
     @Override
-    public Sentence play() {
-        if (sentence == null) {
-            sentence = new Sentence();
-        }
-        for (int i = 0; i <= 3; i++) {
+    public String play(Sentence sentence) {
+        for (turnCount= 0; turnCount <= 3; turnCount++) {
             if (userInput != null) {
                 sentence.getParts().add(userInput);
-                sentence.setActualPart(i);
-                sentence.setCounter(i);
                 return sentence;
             }
         }
         return sentence;
     }
+
+    public void setGameState(int turnCount){
+
+    }
+
+
 }

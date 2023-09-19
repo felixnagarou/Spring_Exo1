@@ -9,4 +9,5 @@ import java.util.UUID;
 public class SentenceDTO {
     private UUID id;
     private String content;
+
 }

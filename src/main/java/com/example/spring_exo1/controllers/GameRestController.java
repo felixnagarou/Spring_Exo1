@@ -25,9 +25,8 @@ public class GameRestController {
     }
 
     @GetMapping("sentenceList")
-    public ResponseEntity<SentenceDTO> getSentenceById(@PathVariable("sentenceList")UUID uuid){
+    public ResponseEntity<SentenceDTO> getSentenceById(@PathVariable("sentenceId")UUID uuid){
         SentenceDTO found = sentenceService.getSentenceByID(uuid);
-
         if (found != null){
             return ResponseEntity.ok(found);
         } else {

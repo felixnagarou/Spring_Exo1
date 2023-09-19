@@ -11,6 +11,7 @@ import java.util.*;
 public class SentenceService {
     private final Map<UUID, SentenceDTO> sentences;
 
+
     public SentenceService(){
         sentences = new HashMap<>();
     }

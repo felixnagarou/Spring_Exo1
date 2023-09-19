@@ -9,6 +9,9 @@ public class Sentence {
 
     private int counter;
 
+    private String userInput;
+
+
     private List<String> partLabels = new ArrayList<>(Arrays.asList("SUJET", "VERBE", "COMPLÉMENT"));
 
     private String actualPart;
@@ -38,8 +41,12 @@ public class Sentence {
     public String getActualPart(){
         return actualPart;
     }
-
     public List<String> getPartLabels() {
         return partLabels;
+    }
+
+
+    public String getUserInput() {
+        return userInput;
     }
 }
