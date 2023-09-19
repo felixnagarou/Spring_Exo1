@@ -11,16 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SentenceController {
     private final GameService gameService;
 
-    public SentenceController(GameService gameService) {this.gameService = gameService};
+    public SentenceController(GameService gameService) {this.gameService = gameService;}
 
-    @RequestMapping(value="/cadavreExquis/game")
-    public String sentenceDisplay(Model model){
-        model.addAttribute()
-        return "game"
-    }
-
-    @PostMapping(value = "/game", consumes = "sentence.json", produces = "sentence.json"){
-
-    }
 
 }
