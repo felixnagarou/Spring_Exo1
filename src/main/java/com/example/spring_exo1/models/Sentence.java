@@ -1,16 +1,20 @@
 package com.example.spring_exo1.models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Sentence {
     private List<String> parts;
 
-    private String partName;
-    public enum partName {
-        SUJET,
-        VERBE,
-        COMPLEMENT;
-    }
+    private int counter;
+
+    private String userInput;
+
+
+    private List<String> partLabels = new ArrayList<>(Arrays.asList("SUJET", "VERBE", "COMPLÉMENT"));
+
+    private String actualPart;
 
     public Sentence() {
     }
@@ -22,8 +26,27 @@ public class Sentence {
         this.parts = parts;
     }
 
-    public String getPartName() {
-
-        return partName;
+    public int getCounter() {
+        return counter;
     }
-}
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    public void setActualPart(int i) {
+        actualPart = partLabels.get(i);
+    }
+
+    public String getActualPart(){
+        return actualPart;
+    }
+    //public List<String> getPartLabels() {
+      //  return partLabels;
+    //}
+
+
+    public String getUserInput() {
+        return userInput;
+    }
+

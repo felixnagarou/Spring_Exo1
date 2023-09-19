@@ -2,16 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Game</title>
 </head>
 <body>
 <main>
     <h1>Jeu du cadavre exquis</h1>
     <hr>
-    <h2>Joueur <span th:text="${sentence.parts.getPart[counter]}"></span>  : entrer le <span th:text="${sentence.getPartName}"></span></h2>
-    <form action="" method="post">
+    <h2>Joueur <span th:text="${playerCount}"></span>  : entrer le <span th:text="${instruction}"></span></h2>
+    <form action="#" th:action="@{/game}" th:object="${sentence}" method="post">
         <label for="part">Entrer une partie de phrase</label>
-        <input type="text" name="part" id="part" required>
+        <input type="text" name="part" id="part" required th:field="*{userInput}">
     </form>
 
 
