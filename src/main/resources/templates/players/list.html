@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of players</title>
+</head>
+<body>
+<main>
+    <tr th:each="p : ${players}">
+        <td th:text="${p.pseudo}"></td>
+        <td th:text="${p.firstLogDate}"></td>
+        <td th:text="${p.getNumberOfPlayedGames()}"></td>
+        <td>
+
+</main>
+
+</body>
+</html>

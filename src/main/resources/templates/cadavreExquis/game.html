@@ -13,7 +13,7 @@
 <main>
     <h1>Jeu du cadavre exquis</h1>
     <hr>
-    <h2 th:object="${game}">Joueur <span th:text="*{turnCount}"></span>  : entrer le <span th:text="*{gameState}"></span></h2>
+    <h2 th:object="${game}">Joueur <span th:text="*{turnCount+1}"></span>  : entrer le <span th:text="*{gameState.get(turnCount)}"></span> de la phrase</h2>
     <form action="#" th:action="@{/game}" th:object="${sentence}" method="post">
         <label for="part">Entrer une partie de phrase</label>
         <input type="text" name="part" id="part" required th:field="*{userInput}">

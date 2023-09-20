@@ -1,8 +1,10 @@
 package com.example.spring_exo1.controllers;
 
 import com.example.spring_exo1.models.Game;
+import com.example.spring_exo1.models.Sentence;
 import com.example.spring_exo1.services.GameService;
 
+import com.example.spring_exo1.services.SentenceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class GameController {
 
     public final GameService gameService;
+    public final SentenceService sentenceService;
 
-    public GameController(GameService gameService){
+    public GameController(GameService gameService, SentenceService sentenceService){
         this.gameService = gameService;
+        this.sentenceService = sentenceService;
     }
 
   //@RequestMapping("/cadavreExquis")
@@ -22,9 +26,16 @@ public class GameController {
   //}
 
     @GetMapping ("/cadavreExquis")
-    public String sendGameStateInstruction(Game game, Model model){
-        model.addAttribute("game", game);
+    public String sendGameStateInstruction(Model model){
+        model.addAttribute("game", new Game());
+        model.addAttribute("sentence", new Sentence());
         return "/cadavreExquis/game";
+    }
+
+    @PostMapping("/add")
+    public String addSentencePart(Model model){
+        sentenceService.addUserInputToSentenceParts()
+
     }
 
 

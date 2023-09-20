@@ -30,7 +30,8 @@ public class SentenceController {
 
     @PostMapping("/cadavreExquis")
     public String setSentence(@ModelAttribute Sentence sentence, Model model){
-        model.addAttribute("sentence", sentence);
-        return "redirect:cadavreExquis/game";
+        model.addAttribute("sentence", sentenceService.addUserInputToSentenceParts());
+        sentenceService.addUserInputToSentenceParts();
+        return "cadavreExquis/game";
     }
 }

@@ -10,8 +10,17 @@ public class Game {
     private int turnCount;
 
 
-    private List<String> gameState = new ArrayList<>(Arrays.asList("SUJET", "VERBE", "COMPLEMENT"));
+    private List<String> gameState = new ArrayList<>(Arrays.asList("sujet", "verbe", "complément"));
 
+    public Game(String error, int turnCount, List<String> gameState) {
+        this.error = error;
+        this.turnCount = turnCount;
+        this.gameState = gameState;
+    }
+
+    public Game(){
+        this.turnCount = 0;
+    }
 
     public String getError() {
         return error;
@@ -36,4 +45,8 @@ public class Game {
     public void setGameState(List<String> gameState) {
         this.gameState = gameState;
     }
+
+
+
+
 }
