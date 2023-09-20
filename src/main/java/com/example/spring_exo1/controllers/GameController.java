@@ -1,7 +1,7 @@
 package com.example.spring_exo1.controllers;
 
+import com.example.spring_exo1.models.Game;
 import com.example.spring_exo1.models.Sentence;
-import com.example.spring_exo1.models.SentenceDTO;
 import com.example.spring_exo1.services.GameService;
 
 import com.example.spring_exo1.services.SentenceService;
@@ -13,20 +13,31 @@ import org.springframework.web.bind.annotation.*;
 public class GameController {
 
     public final GameService gameService;
+    public final SentenceService sentenceService;
 
-    public GameController(GameService gameService){
+    public GameController(GameService gameService, SentenceService sentenceService){
         this.gameService = gameService;
+        this.sentenceService = sentenceService;
     }
 
-    @RequestMapping("index")
-    public String index(){
-        return "index";
+  //@RequestMapping("/cadavreExquis")
+  //public String index(){
+  //    return "/cadavreExquis/game";
+  //}
+
+    @GetMapping ("/cadavreExquis")
+    public String sendGameStateInstruction(Model model){
+
+        model.addAttribute("game", new Game());
+        model.addAttribute("sentence", new Sentence());
+        return "/cadavreExquis/game";
     }
 
-    @RequestMapping("/index/cadavreExquis")
-    public String sendInstruction(Model model){
-        model.addAttribute("playerCount", gameService.getTurnCount());
-        model.addAttribute("instruction", gameService.getGameState(gameService.getTurnCount()));
-        return "cadavreExquis/game";
+    @PostMapping("/cadavreExquis")
+    public String addSentencePart(String sentencePart){
+         Sentence sentence = sentenceService.addPart(sentencePart);
+
+        return "/cadavreExquis/game";
+
     }
 }
