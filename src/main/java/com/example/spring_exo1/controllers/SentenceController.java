@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SentenceController {
 
-    public final SentenceService sentenceService;
-
-    public SentenceController(SentenceService sentenceService){
-        this.sentenceService = sentenceService;
-    }
+   // public final SentenceService sentenceService;
+//
+   // public SentenceController(SentenceService sentenceService){
+   //     this.sentenceService = sentenceService;
+   // }
 
 
 

@@ -7,16 +7,15 @@ import java.util.UUID;
 
 public class Sentence {
 
-    private UUID uuid;
+
     private List<String> parts;
     private String userInput;
 
     public Sentence() {
     }
 
-    public Sentence(UUID uuid, List<String> parts, String userInput) {
-        this.uuid = uuid;
-        this.parts = parts;
+    public Sentence( String userInput) {
+        this.parts = new ArrayList<>();
         this.userInput = userInput;
     }
 
@@ -36,8 +35,5 @@ public class Sentence {
         this.userInput = userInput;
     }
 
-    public UUID getUuid() {
-        return uuid;
-    }
 }
 

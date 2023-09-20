@@ -35,8 +35,7 @@ public class GameController {
 
     @PostMapping("/cadavreExquis")
     public String addSentencePart(String sentencePart){
-         Sentence sentence = sentenceService.addPart(sentencePart);
-
+         sentenceService.addPart(sentencePart);
         return "/cadavreExquis/game";
 
     }

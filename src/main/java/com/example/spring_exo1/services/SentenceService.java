@@ -13,7 +13,7 @@ public class SentenceService {
     private final Sentence sentence;
 
     public SentenceService(){
-        sentence = new Sentence();
+        sentence = new Sentence("test");
     }
 
    // public List<Sentence> getSentences(){
@@ -31,10 +31,9 @@ public class SentenceService {
 
 
 
-    public Sentence addPart(String sentenceData) {
+    public void addPart(String sentenceData) {
         sentence.setUserInput(sentenceData);
         sentence.getParts().add(sentence.getUserInput());
-        return sentence;
     }
 
 }
