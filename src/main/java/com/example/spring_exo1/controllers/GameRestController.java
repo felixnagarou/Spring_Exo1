@@ -1,7 +1,7 @@
 package com.example.spring_exo1.controllers;
 
 import com.example.spring_exo1.exceptions.RessourceNotFoundException;
-import com.example.spring_exo1.models.SentenceDTO;
+import com.example.spring_exo1.models.Sentence;
 import com.example.spring_exo1.services.SentenceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,20 +19,20 @@ import java.util.UUID;
 public class GameRestController {
     private final SentenceService sentenceService;
 
-    @GetMapping("sentences")
-    public List<SentenceDTO> sentenceDTOList(){
+    @GetMapping("/sentenceList")
+    public List<Sentence> sentenceList(){
         return sentenceService.getSentences();
     }
 
-    @GetMapping("sentenceList")
-    public ResponseEntity<SentenceDTO> getSentenceById(@PathVariable("sentenceId")UUID uuid){
-        SentenceDTO found = sentenceService.getSentenceByID(uuid);
-        if (found != null){
-            return ResponseEntity.ok(found);
-        } else {
-            throw new RessourceNotFoundException();
-        }
-    }
+    //@GetMapping("/sentenceList")
+    //public ResponseEntity<Sentence> getSentenceById(UUID uuid){
+    //    Sentence found = sentenceService.getSentenceByID(uuid);
+    //    if (found != null){
+    //        return ResponseEntity.ok(found);
+    //    } else {
+    //        throw new RessourceNotFoundException();
+    //    }
+    //}
 
 
 

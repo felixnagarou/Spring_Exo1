@@ -1,10 +1,8 @@
 package com.example.spring_exo1.controllers;
 
-import com.example.spring_exo1.models.Sentence;
-import com.example.spring_exo1.models.SentenceDTO;
+import com.example.spring_exo1.models.Game;
 import com.example.spring_exo1.services.GameService;
 
-import com.example.spring_exo1.services.SentenceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,15 +16,16 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @RequestMapping("index")
-    public String index(){
-        return "index";
+  //@RequestMapping("/cadavreExquis")
+  //public String index(){
+  //    return "/cadavreExquis/game";
+  //}
+
+    @GetMapping ("/cadavreExquis")
+    public String sendGameStateInstruction(Game game, Model model){
+        model.addAttribute("game", game);
+        return "/cadavreExquis/game";
     }
 
-    @RequestMapping("/index/cadavreExquis")
-    public String sendInstruction(Model model){
-        model.addAttribute("playerCount", gameService.getTurnCount());
-        model.addAttribute("instruction", gameService.getGameState(gameService.getTurnCount()));
-        return "cadavreExquis/game";
-    }
+
 }
