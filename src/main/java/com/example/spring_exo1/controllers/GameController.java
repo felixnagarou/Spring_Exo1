@@ -27,6 +27,7 @@ public class GameController {
 
     @GetMapping ("/cadavreExquis")
     public String sendGameStateInstruction(Model model){
+
         model.addAttribute("game", new Game());
         model.addAttribute("sentence", new Sentence());
         return "/cadavreExquis/game";
@@ -34,11 +35,9 @@ public class GameController {
 
     @PostMapping("/cadavreExquis")
     public String addSentencePart(String sentencePart){
-        sentenceService.addPart(sentencePart);
+         Sentence sentence = sentenceService.addPart(sentencePart);
 
-        return "redirect:/game";
+        return "/cadavreExquis/game";
 
     }
-
-
 }

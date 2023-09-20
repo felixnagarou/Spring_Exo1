@@ -17,6 +17,7 @@
     <form action="#" th:action="@{/cadavreExquis}" th:object="${sentence}" method="post">
         <label for="part">Entrer une partie de phrase</label>
         <input type="text" name="part" id="part" required th:field="*{parts}">
+        <a th:href="@{/cadavreExquis}"></a>
         <button>Submit </button>
     </form>
 

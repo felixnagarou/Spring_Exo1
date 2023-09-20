@@ -20,11 +20,11 @@ public class SentenceController {
 
 
 
-    @GetMapping("/cadavreExquis/game")
-    public String createSentence(Model model){
-        model.addAttribute("sentence", new Sentence());
-        return "/cadavreExquis/game";
-    }
+   // @GetMapping("/cadavreExquis/game")
+   // public String createSentence(Model model){
+   //     model.addAttribute("sentence", new Sentence());
+   //     return "/cadavreExquis/game";
+   // }
 
 
 

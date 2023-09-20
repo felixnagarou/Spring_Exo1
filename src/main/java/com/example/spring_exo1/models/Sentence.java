@@ -9,26 +9,15 @@ public class Sentence {
 
     private UUID uuid;
     private List<String> parts;
-
-    private int counter;
-
     private String userInput;
-
-
-    private List<String> partLabels = new ArrayList<>(Arrays.asList("SUJET", "VERBE", "COMPLÉMENT"));
-
-    private String actualPart;
 
     public Sentence() {
     }
 
-    public Sentence(UUID uuid, List<String> parts, int counter, String userInput, List<String> partLabels, String actualPart) {
+    public Sentence(UUID uuid, List<String> parts, String userInput) {
         this.uuid = uuid;
         this.parts = parts;
-        this.counter = counter;
         this.userInput = userInput;
-        this.partLabels = partLabels;
-        this.actualPart = actualPart;
     }
 
     public List<String> getParts() {
@@ -39,9 +28,12 @@ public class Sentence {
         this.parts = parts;
     }
 
-
     public String getUserInput() {
         return userInput;
+    }
+
+    public void setUserInput(String userInput) {
+        this.userInput = userInput;
     }
 
     public UUID getUuid() {

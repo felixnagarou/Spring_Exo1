@@ -31,9 +31,10 @@ public class SentenceService {
 
 
 
-    public String addPart(String sentenceData) {
-        sentence.getParts().add(sentenceData);
-        return sentenceData;
+    public Sentence addPart(String sentenceData) {
+        sentence.setUserInput(sentenceData);
+        sentence.getParts().add(sentence.getUserInput());
+        return sentence;
     }
 
 }
