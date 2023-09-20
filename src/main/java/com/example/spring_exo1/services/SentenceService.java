@@ -10,10 +10,10 @@ import java.util.*;
 @Service
 @Primary
 public class SentenceService {
-    private final List<String> sentence;
+    private final Sentence sentence;
 
     public SentenceService(){
-        sentence = new ArrayList<>();
+        sentence = new Sentence();
     }
 
    // public List<Sentence> getSentences(){
@@ -29,8 +29,10 @@ public class SentenceService {
    //      return sentences.values().stream().filter(s -> s.getUuid().equals(id)).findFirst().orElse(null);
    // }
 
+
+
     public String addPart(String sentenceData) {
-        sentence.add(sentenceData);
+        sentence.getParts().add(sentenceData);
         return sentenceData;
     }
 

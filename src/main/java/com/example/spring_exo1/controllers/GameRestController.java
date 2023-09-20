@@ -19,10 +19,10 @@ import java.util.UUID;
 public class GameRestController {
     private final SentenceService sentenceService;
 
-    @GetMapping("/sentenceList")
-    public List<Sentence> sentenceList(){
-        return sentenceService.getSentences();
-    }
+  // @GetMapping("/sentenceList")
+  // public List<Sentence> sentenceList(){
+  //     return sentenceService.getSentences();
+  // }
 
     //@GetMapping("/sentenceList")
     //public ResponseEntity<Sentence> getSentenceById(UUID uuid){

@@ -22,6 +22,15 @@ public class Sentence {
     public Sentence() {
     }
 
+    public Sentence(UUID uuid, List<String> parts, int counter, String userInput, List<String> partLabels, String actualPart) {
+        this.uuid = uuid;
+        this.parts = parts;
+        this.counter = counter;
+        this.userInput = userInput;
+        this.partLabels = partLabels;
+        this.actualPart = actualPart;
+    }
+
     public List<String> getParts() {
         return parts;
     }
@@ -29,25 +38,6 @@ public class Sentence {
     public void setParts(List<String> parts) {
         this.parts = parts;
     }
-
-    public int getCounter() {
-        return counter;
-    }
-
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
-    public void setActualPart(int i) {
-        actualPart = partLabels.get(i);
-    }
-
-    public String getActualPart() {
-        return actualPart;
-    }
-    //public List<String> getPartLabels() {
-    //  return partLabels;
-    //}
 
 
     public String getUserInput() {

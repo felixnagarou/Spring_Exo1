@@ -32,9 +32,11 @@ public class GameController {
         return "/cadavreExquis/game";
     }
 
-    @PostMapping("/add")
-    public String addSentencePart(Model model){
-        sentenceService.addUserInputToSentenceParts()
+    @PostMapping("/cadavreExquis")
+    public String addSentencePart(String sentencePart){
+        sentenceService.addPart(sentencePart);
+
+        return "redirect:/game";
 
     }
 
