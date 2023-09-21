@@ -38,6 +38,6 @@ public class GameController {
     public String addSentencePart(Sentence sentence){
         sentenceService.editSentence(gameService.getGame().getTurnCount(), sentence.getUserInput());
         gameService.updateTurnCountUntilSentenceFinished();
-        return "redirect:/add";
+        return "redirect:/cadavreExquis/add";
     }
 }

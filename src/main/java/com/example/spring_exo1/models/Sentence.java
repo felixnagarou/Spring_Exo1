@@ -1,9 +1,12 @@
 package com.example.spring_exo1.models;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 
 public class Sentence {
 
@@ -11,16 +14,10 @@ public class Sentence {
     private List<String> parts;
     private String userInput;
 
+
     public Sentence() {
-    }
-
-    public Sentence( String userInput) {
         this.parts = new ArrayList<>();
-        this.userInput = userInput;
-    }
-
-    public List<String> getParts() {
-        return parts;
+        this.userInput = null;
     }
 
     public void setParts(List<String> parts) {
@@ -31,9 +28,15 @@ public class Sentence {
         return userInput;
     }
 
+    public List<String> getParts() {
+        return parts;
+    }
+
     public void setUserInput(String userInput) {
         this.userInput = userInput;
     }
+
+
 
 }
 

@@ -2,6 +2,7 @@ package com.example.spring_exo1.services;
 
 import com.example.spring_exo1.models.PlayerDTO;
 import com.example.spring_exo1.models.Sentence;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,12 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 @Primary
+@RequiredArgsConstructor
 public class SentenceService {
-    private final Sentence sentence = new Sentence();
+    public static Sentence sentence = new Sentence();
 
-    public SentenceService(){
+    public SentenceService(Sentence sentence){
+        this.sentence = sentence;
     }
 
    // public List<Sentence> getSentences(){
@@ -37,11 +40,11 @@ public class SentenceService {
         return sentence;
     }
 
-    public List<String> editSentence(int turnCount, String newPart){
+    public Sentence editSentence(int turnCount, String newPart){
         sentence.setUserInput(newPart);
-        List<String> fullSentence = sentence.getParts();
-        fullSentence.add(sentence.getUserInput());
-       return fullSentence;
+        sentence.getParts().add(sentence.getUserInput());
+        return sentence;
+
     }
 
 }
