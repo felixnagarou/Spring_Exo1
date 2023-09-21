@@ -26,17 +26,18 @@ public class GameController {
   //    return "/cadavreExquis/game";
   //}
 
-    @GetMapping ("/form")
+    @GetMapping ("/add")
     public String sendGameStateInstruction(Model model){
         model.addAttribute("game", gameService.getGame());
-        model.addAttribute("turnCount", gameService.updateTurnCountUntilSentenceFinished());
+       // model.addAttribute("turnCount", gameService.updateTurnCountUntilSentenceFinished());
         model.addAttribute("sentence", sentenceService.getSentence());
         return "/cadavreExquis/game";
     }
 
-    @PostMapping("/addPart")
-    public String addSentencePart(String sentencePart){
-        sentenceService.editSentence(gameService.getGame().getTurnCount(), sentencePart);
-        return "redirect:/form";
+    @PostMapping("/add")
+    public String addSentencePart(Sentence sentence){
+        sentenceService.editSentence(gameService.getGame().getTurnCount(), sentence.getUserInput());
+        gameService.updateTurnCountUntilSentenceFinished();
+        return "redirect:/add";
     }
 }

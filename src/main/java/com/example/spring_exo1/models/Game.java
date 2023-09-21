@@ -19,7 +19,7 @@ public class Game {
     }
 
     public Game(){
-        this.turnCount = 1;
+        this.turnCount = 0;
     }
 
     public String getError() {

@@ -11,10 +11,9 @@ import java.util.concurrent.atomic.AtomicReference;
 @Service
 @Primary
 public class SentenceService {
-    private final Sentence sentence;
+    private final Sentence sentence = new Sentence();
 
     public SentenceService(){
-        sentence = new Sentence();
     }
 
    // public List<Sentence> getSentences(){
@@ -38,9 +37,11 @@ public class SentenceService {
         return sentence;
     }
 
-    public Sentence editSentence(int turnCount, String newPart){
-        sentence.getParts().add( turnCount, newPart);
-        return sentence;
+    public List<String> editSentence(int turnCount, String newPart){
+        sentence.setUserInput(newPart);
+        List<String> fullSentence = sentence.getParts();
+        fullSentence.add(sentence.getUserInput());
+       return fullSentence;
     }
 
 }
