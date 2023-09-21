@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/cadavreExquis")
 public class GameController {
 
     public final GameService gameService;
@@ -25,18 +26,17 @@ public class GameController {
   //    return "/cadavreExquis/game";
   //}
 
-    @GetMapping ("/cadavreExquis")
+    @GetMapping ("/form")
     public String sendGameStateInstruction(Model model){
-
-        model.addAttribute("game", new Game());
-        model.addAttribute("sentence", new Sentence());
+        model.addAttribute("game", gameService.getGame());
+        model.addAttribute("turnCount", gameService.updateTurnCountUntilSentenceFinished());
+        model.addAttribute("sentence", sentenceService.getSentence());
         return "/cadavreExquis/game";
     }
 
-    @PostMapping("/cadavreExquis")
+    @PostMapping("/addPart")
     public String addSentencePart(String sentencePart){
-         sentenceService.addPart(sentencePart);
-        return "/cadavreExquis/game";
-
+        sentenceService.editSentence(gameService.getGame().getTurnCount(), sentencePart);
+        return "redirect:/form";
     }
 }

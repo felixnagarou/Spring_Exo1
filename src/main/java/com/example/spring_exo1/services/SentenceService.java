@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 @Primary
@@ -13,7 +14,7 @@ public class SentenceService {
     private final Sentence sentence;
 
     public SentenceService(){
-        sentence = new Sentence("test");
+        sentence = new Sentence();
     }
 
    // public List<Sentence> getSentences(){
@@ -31,9 +32,15 @@ public class SentenceService {
 
 
 
-    public void addPart(String sentenceData) {
-        sentence.setUserInput(sentenceData);
-        sentence.getParts().add(sentence.getUserInput());
+
+
+    public Sentence getSentence(){
+        return sentence;
+    }
+
+    public Sentence editSentence(int turnCount, String newPart){
+        sentence.getParts().add( turnCount, newPart);
+        return sentence;
     }
 
 }
