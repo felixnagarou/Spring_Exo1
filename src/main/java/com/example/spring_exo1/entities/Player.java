@@ -6,13 +6,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString
 @EqualsAndHashCode
 public class Player {
@@ -20,7 +20,11 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String pseudo;
-    private Date firstLogDate;
+    private LocalDate firstLogDate;
     private int numberOfPlayedGames;
+
+    public Player(){
+        this.firstLogDate = LocalDate.now();
+    }
 
 }

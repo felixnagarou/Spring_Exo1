@@ -9,5 +9,5 @@ import java.util.UUID;
 public interface PLayerRepository extends JpaRepository<Player, UUID> {
     List<Player> findAllByPseudoStartingWith (String value);
 
-    List<Player> findAllByOrderByFirstLogDateAsc (String value);
+    List<Player> findAllByOrderByFirstLogDateAsc (Integer value);
 }

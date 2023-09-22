@@ -11,6 +11,6 @@ import java.util.UUID;
 public class PlayerDTO {
     private UUID id;
     private String pseudo;
-    private int years;
-    private int numberOfPlayedGames;
+    private Integer years;
+    private Integer numberOfPlayedGames;
 }
