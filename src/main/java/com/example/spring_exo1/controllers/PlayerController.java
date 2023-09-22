@@ -43,6 +43,7 @@ public class PlayerController {
         return "players/list";
     }
 
+
     @GetMapping("/addPlayer")
     public String playerFormRedirect(Model model){
         model.addAttribute("player", PlayerDTO.builder().build());
