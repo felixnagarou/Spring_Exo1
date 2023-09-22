@@ -57,6 +57,12 @@ public class PlayerController {
        return "redirect:/players";
     }
 
+    @PostMapping("/edit")
+    public String editPLayerGivenId(@PathVariable("/edit/{playerId}") UUID id,@RequestBody PlayerDTO playerData){
+       playerService.changePlayerPseudo(id,playerData) ;
+       return "redirect:/players";
+    }
+
     @DeleteMapping ("/delete/{playerId}")
     public String deletePlayerById(@PathVariable("playerId") UUID id) {
        playerService.deletePlayerById(id);

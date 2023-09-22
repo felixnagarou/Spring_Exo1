@@ -19,11 +19,8 @@ public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
     private String pseudo;
-
     private Date firstLogDate;
-
     private int numberOfPlayedGames;
 
 }

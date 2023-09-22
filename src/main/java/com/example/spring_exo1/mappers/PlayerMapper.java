@@ -11,19 +11,16 @@ import java.time.LocalDate;
 @Mapper
 public interface PlayerMapper {
 
-    @Mapping(source ="", target = "")
-    @Mapping(source ="", target = "")
+    @Mapping(source ="firstLogDate", target = "years", qualifiedByName = "convertDateToYears")
     PlayerDTO playerToPlayerDTO(Player player);
 
-    @Mapping(source = "", target = "")
     Player playerDTOToPlayer(PlayerDTO dto);
 
 
     @Named("convertDateToYears")
     public static Integer convertDateToYears(LocalDate date){
         LocalDate now = LocalDate.now();
-        Integer numberOfYears = now.getYear() - date.getYear();
-        return numberOfYears;
+        return now.getYear() - date.getYear();
     }
 
 
