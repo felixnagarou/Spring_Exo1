@@ -1,5 +1,6 @@
 package com.example.spring_exo1.services;
 
+import com.example.spring_exo1.exceptions.RessourceNotFoundException;
 import com.example.spring_exo1.mappers.PlayerMapper;
 import com.example.spring_exo1.models.PlayerDTO;
 import com.example.spring_exo1.repositories.PLayerRepository;
@@ -56,8 +57,9 @@ public class PlayerService {
         return pLayerRepository.findAll().stream().map(playerMapper::playerToPlayerDTO).toList();
     }
 
-    public Optional<PlayerDTO> getPlayerById(UUID id) {
-        return pLayerRepository.findById(id).stream().map(playerMapper::playerToPlayerDTO).findFirst();
+    public PlayerDTO getPlayerById(UUID id) {
+        //return pLayerRepository.findById(id).stream().map(playerMapper::playerToPlayerDTO).findFirst();
+        return pLayerRepository.findById(id).map(playerMapper::playerToPlayerDTO).orElseThrow(RessourceNotFoundException::new);
     }
     public List<PlayerDTO> getPlayersSimilarToGivenPseudo(String pseudo) {
         return pLayerRepository.findAllByPseudoStartingWith(pseudo).stream().map(playerMapper::playerToPlayerDTO).toList();
@@ -78,29 +80,17 @@ public class PlayerService {
     }
 
     public Boolean deletePlayerById(UUID id){
-        Optional<PlayerDTO> foundPlayer = getPlayerById(id);
+       //Optional<PlayerDTO> foundPlayer = getPlayerById(id);
 
-        if (foundPlayer.isPresent()){
-            players.remove(foundPlayer.get().getId());
-            return true;
-        }
-        return false;
-
+       //if (foundPlayer.isPresent()){
+       //    players.remove(foundPlayer.get().getId());
+       //    return true;
+       //}
+        //pLayerRepository.findById(id).stream().map(playerMapper::playerToPlayerDTO).
+        //pLayerRepository.delete();
     }
 
     public PlayerDTO changePlayerPseudo(UUID id, PlayerDTO newPseudo){
-        AtomicReference<PlayerDTO> atomicReference = new AtomicReference<>();
 
-        Optional<PlayerDTO> foundPlayer = getPlayerById(id);
-
-        foundPlayer.ifPresentOrElse(found -> {
-            if (newPseudo.getPseudo() != null) {
-                found.setPseudo(newPseudo.getPseudo());
-            }
-            atomicReference.set(found);
-        }, () -> {
-            atomicReference.set(null);
-        });
-        return atomicReference.get();
     }
 }
