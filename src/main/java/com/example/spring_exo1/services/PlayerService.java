@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class PlayerService {
@@ -63,5 +64,32 @@ public class PlayerService {
         players.put(playerData.getId(), playerData);
 
         return playerData;
+    }
+
+    public Boolean deletePlayerById(UUID id){
+        Optional<PlayerDTO> foundPlayer = getPlayerById(id);
+
+        if (foundPlayer.isPresent()){
+            players.remove(foundPlayer.get().getId());
+            return true;
+        }
+        return false;
+
+    }
+
+    public PlayerDTO changePlayerPseudo(UUID id, PlayerDTO newPseudo){
+        AtomicReference<PlayerDTO> atomicReference = new AtomicReference<>();
+
+        Optional<PlayerDTO> foundPlayer = getPlayerById(id);
+
+        foundPlayer.ifPresentOrElse(found -> {
+            if (newPseudo.getPseudo() != null) {
+                found.setPseudo(newPseudo.getPseudo());
+            }
+            atomicReference.set(found);
+        }, () -> {
+            atomicReference.set(null);
+        });
+        return atomicReference.get();
     }
 }

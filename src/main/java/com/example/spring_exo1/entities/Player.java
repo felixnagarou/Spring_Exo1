@@ -24,6 +24,6 @@ public class Player {
 
     private Date firstLogDate;
 
-    private int numberOfPLayedGames;
+    private int numberOfPlayedGames;
 
 }
