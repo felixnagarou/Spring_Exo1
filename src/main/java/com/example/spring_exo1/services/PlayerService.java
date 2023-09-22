@@ -80,17 +80,15 @@ public class PlayerService {
     }
 
     public Boolean deletePlayerById(UUID id){
-       //Optional<PlayerDTO> foundPlayer = getPlayerById(id);
-
-       //if (foundPlayer.isPresent()){
-       //    players.remove(foundPlayer.get().getId());
-       //    return true;
-       //}
-        //pLayerRepository.findById(id).stream().map(playerMapper::playerToPlayerDTO).
-        //pLayerRepository.delete();
+        PlayerDTO playerDTO = getPlayerById(id);
+        pLayerRepository.deleteById(id);
     }
 
-    public PlayerDTO changePlayerPseudo(UUID id, PlayerDTO newPseudo){
+    public PlayerDTO changePlayerPseudo(UUID id, String newPseudo){
+        PlayerDTO playerDTO = getPlayerById(id);
+        playerDTO.setPseudo(newPseudo);
+        return ;
+
 
     }
 }
