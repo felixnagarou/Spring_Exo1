@@ -13,9 +13,16 @@
     <hr>
     <form action="#" th:action="@{/players/add}" method="post" th:object="${player}">
         <input type="text" class="d-none" th:field="*{id}" readonly>
-        <div class = "mb-3"><label for="pseudo" class="form-label"></label><input type="text" id="pseudo" class="form-control" th:field="*{pseudo}" th:readonly="${mode.equals(details)}"></div>
-        <div class = "mb-3"><label for="years" class="form-label"></label><input type="text" id="years" class="form-control" th:field="*{years}" th:readonly="${mode.equals(details)}"></div>
-        <div class = "mb-3"><label for="numberOfPlayedGames" class="form-label" ></label><input id="numberOfPlayedGames" type="text" class="form-control" th:field="*{numberOfPlayedGames}" th:readonly="${mode.equals(details)}"></div>
+        <div class = "mb-3">
+            <label for="pseudo" class="form-label">Pseudonyme :</label><input type="text" id="pseudo" class="form-control" th:field="*{pseudo}" th:readonly="${mode.equals(details)}"></div>
+        <div class = "mb-3">
+            <label for="years" class="form-label">Ancienneté :</label><input type="text" id="years" class="form-control" th:field="*{years}" readonly></div>
+        <div class = "mb-3">
+            <label for="numberOfPlayedGames" class="form-label" >Nombre de parties jouées : </label><input id="numberOfPlayedGames" type="text" class="form-control" th:field="*{numberOfPlayedGames}" readonly></div>
+        <div>
+            <a href=""></a>
+            <button th:unless="${mode.equals('details')}" class="btn btn-success"><i class="bi bi-plus-circle"></i>Ajouter un joueur</button>
+        </div>
     </form>
 </main>
 
