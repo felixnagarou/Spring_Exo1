@@ -23,13 +23,10 @@ public class PlayerController {
 
    @GetMapping("/{playerId}")
    public String getPlayerDetails(@PathVariable("playerId") UUID uuid, Model model){
-       Optional<PlayerDTO> found = playerService.getPlayerById(uuid);
-       if (found.isPresent()){
-           model.addAttribute("player", found.get());
+       PlayerDTO found = playerService.getPlayerById(uuid);
+           model.addAttribute("player", found);
            model.addAttribute("details", "details");
            return "/players/form";
-       }
-       throw new RessourceNotFoundException();
    }
 
     @GetMapping
@@ -58,9 +55,9 @@ public class PlayerController {
        return "redirect:/players";
     }
 
-    @PostMapping("/edit")
-    public String editPLayerGivenId(@PathVariable("/edit/{playerId}") UUID id,@RequestBody PlayerDTO playerData){
-       playerService.changePlayerPseudo(id,playerData) ;
+    @PatchMapping("/edit/{playerId}")
+    public String editPLayerGivenId(@PathVariable("playerId") UUID id, PlayerDTO playerData){
+       playerService.changePlayerPseudo(id, playerData) ;
        return "redirect:/players";
     }
 

@@ -84,11 +84,9 @@ public class PlayerService {
         pLayerRepository.deleteById(id);
     }
 
-    public PlayerDTO changePlayerPseudo(UUID id, String newPseudo){
+    public PlayerDTO changePlayerPseudo(UUID id, PlayerDTO newPlayerInfos){
         PlayerDTO playerDTO = getPlayerById(id);
-        playerDTO.setPseudo(newPseudo);
-        return ;
-
-
+        playerDTO.setPseudo(newPlayerInfos.getPseudo());
+        return  playerDTO;
     }
 }
