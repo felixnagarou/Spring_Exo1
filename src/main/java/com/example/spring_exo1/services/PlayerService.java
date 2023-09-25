@@ -81,7 +81,11 @@ public class PlayerService {
 
     public Boolean deletePlayerById(UUID id){
         PlayerDTO playerDTO = getPlayerById(id);
+        if (playerDTO != null){
         pLayerRepository.deleteById(id);
+        return true;
+        }
+        throw new RessourceNotFoundException();
     }
 
     public PlayerDTO changePlayerPseudo(UUID id, PlayerDTO newPlayerInfos){

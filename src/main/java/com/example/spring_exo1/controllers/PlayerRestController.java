@@ -32,12 +32,11 @@ public class PlayerRestController {
 
     @GetMapping("/{playerId}")
     public PlayerDTO getPlayerDetails(@PathVariable("playerId") UUID id){
-        Optional<PlayerDTO> foundPlayer = playerService.getPlayerById(id);
-
-        if (foundPlayer.isPresent()){
-            return foundPlayer.get();
+        PlayerDTO playerDTO = playerService.getPlayerById(id);
+        if(playerDTO != null){
+            return playerDTO;
         }
-        throw new RessourceNotFoundException();
+        throw  new RessourceNotFoundException();
     }
 
     @PostMapping("/add")
@@ -51,9 +50,9 @@ public class PlayerRestController {
 
     @DeleteMapping("/{playerId}")
     public ResponseEntity<String> deletePlayerById(@PathVariable("playerId") UUID id) {
-        Optional<PlayerDTO> foundPlayer = playerService.getPlayerById(id);
+        PlayerDTO dto = playerService.getPlayerById(id);
 
-        if (foundPlayer.isPresent()) {
+        if (dto != null) {
             if (playerService.deletePlayerById(id)) {
                 return new ResponseEntity<String>("Player was deleted at id : " + id, HttpStatus.OK);
             }
@@ -65,9 +64,9 @@ public class PlayerRestController {
 
     @PatchMapping("/{playerId")
     public  PlayerDTO editPlayer(@PathVariable("playerId") UUID id, @RequestBody PlayerDTO playerData) {
-        Optional<PlayerDTO> foundPlayer = playerService.getPlayerById(id);
+        PlayerDTO playerDTO = playerService.getPlayerById(id);
 
-        if (foundPlayer.isPresent()){
+        if (playerDTO != null){
             return playerService.changePlayerPseudo(id, playerData);
         } else {
             throw  new RessourceNotFoundException();
